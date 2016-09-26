@@ -6,7 +6,6 @@
   },
   "parser": "babel-eslint",
   "plugins": [
-    "react",
     "import"
   ],
   "settings": {
@@ -48,19 +47,6 @@
     "object-curly-spacing": [1, "always"],
     "prefer-const": 2,
     "quotes": [2, "single", "avoid-escape"],
-    "react/jsx-boolean-value": 1,
-    "react/jsx-no-undef": 2,
-    "react/jsx-uses-react": 1,
-    "react/jsx-uses-vars": 1,
-    "react/no-did-mount-set-state": 1,
-    "react/no-did-update-set-state": 1,
-    "react/no-unknown-property": 1,
-    "react/prop-types": 1,
-    "react/react-in-jsx-scope": 1,
-    "react/self-closing-comp": 1,
-    "react/sort-comp": 1,
-    "react/sort-prop-types": 1,
-    "react/wrap-multilines": 1,
     "semi": [2, "never"],
     "strict": 0,
     "yoda": 2

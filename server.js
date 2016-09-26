@@ -1,14 +1,14 @@
 // Requirements
-const express = require('express');
-const app = express();
-const logger = require('morgan');
-const bodyParser = require('body-parser');
-const port = process.env.PORT || 3000;
+import * as express from 'express'
+import * as logger from 'morgan'
+import * as bodyParser from 'body-parser'
 
 // Middleware
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+const app = express()
+const port = process.env.PORT || 3000
+app.use(logger('dev'))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 // Database
 
@@ -17,7 +17,7 @@ const facebookController = require('./controllers/facebook.js')
 app.use('/fb', facebookController)
 
 // Listen
-app.listen(port);
-console.log('==============');
-console.log('listening on port ' + port);
-console.log('==============');
+app.listen(port)
+console.log('==============')
+console.log('listening on port ' + port)
+console.log('==============')
