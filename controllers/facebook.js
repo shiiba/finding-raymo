@@ -3,7 +3,7 @@
 const express = require('express')
 const router = express.Router()
 const request = require('request')
-const token = process.ENV.RAYMO_KEY
+const token = process.env.RAYMO_KEY
 
 const sendTextMessage = (sender, text) => {
   const messageData = { text }
