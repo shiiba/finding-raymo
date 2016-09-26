@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 
 router.get('/webhook/', (req, res) => {
   if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
-    res.sens(req.query['hub.challenge'])
+    res.send(req.query['hub.challenge'])
   }
   res.send('Error, wrong token')
 })
