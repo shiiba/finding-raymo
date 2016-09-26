@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const request = require('request')
-const token = 'EAAB1y8JupUoBAJZC22EVPxtpzMC7kBXcLE8mDoVZBPz16XbflnPnZAanYPxFZCM32sTfzGm4YJtkZAfelxjQUCiBBGngdsfpIPZBxmgcszr8XYlno0ZCznaceHIsbThuncevAO0ag0p70Esc0DlcqC3iRfeviLFRk5iZA7VhMB1mCgZDZD'
+const token = process.ENV.RAYMO_KEY
 
 const sendTextMessage = (sender, text) => {
   const messageData = { text }
