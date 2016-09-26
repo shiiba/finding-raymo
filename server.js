@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 // Database
 
 // Controllers
-// const usersController = require('./controllers/users.js');
-// app.use('/users', usersController);
+const facebookController = require('./controllers/facebook.js')
+app.use('/fb', facebookController)
 
 // Listen
 app.listen(port);
