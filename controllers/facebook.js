@@ -1,4 +1,4 @@
-import express from 'express'
+const express = require('express')
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -12,3 +12,4 @@ router.get('/webhook/', (req, res) => {
   res.send('Error, wrong token')
 })
 
+module.exports = router

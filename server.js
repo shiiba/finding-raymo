@@ -1,7 +1,7 @@
 // Requirements
-import * as express from 'express'
-import * as logger from 'morgan'
-import * as bodyParser from 'body-parser'
+const express = require('express')
+const logger = require('morgan')
+const bodyParser = require('body-parser')
 
 // Middleware
 const app = express()
