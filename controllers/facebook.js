@@ -4,9 +4,11 @@ const express = require('express')
 const router = express.Router()
 const request = require('request')
 const token = process.env.RAYMO_KEY
+const verifyToken = 'my_voice_is_my_password_verify_me'
 
 const sendTextMessage = (sender, text) => {
   const messageData = { text }
+  console.log('fb token is:', token)
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
     qs: { accessToken: token },
@@ -29,7 +31,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/webhook/', (req, res) => {
-  if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
+  if (req.query['hub.verify_token'] === verifyToken) {
     res.send(req.query['hub.challenge'])
   }
   res.send('Error, wrong token')
