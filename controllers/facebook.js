@@ -36,6 +36,7 @@ router.get('/webhook/', (req, res) => {
 })
 
 router.post('/webhook/', (req, res) => {
+  console.log('hitting webhook post route')
   const messagingEvents = req.body.entry[0].messaging
   for (let i = 0; i < messagingEvents.length; i++) {
     const event = req.body.entry[0].messaging[i]
