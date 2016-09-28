@@ -14,7 +14,7 @@ const sendTextMessage = (sender, text) => {
     qs: { accessToken: token },
     method: 'POST',
     json: {
-      recipient: { id: sender },
+      recipient: { id: "1203137999743112" },
       message: messageData,
     }
   }, (error, response) => {
