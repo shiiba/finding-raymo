@@ -14,7 +14,7 @@ const sendTextMessage = (sender, text) => {
     qs: { accessToken: token },
     method: 'POST',
     json: {
-      recipient: { phone_number: "+1(916)316-0342" },
+      recipient: { id: sender },
       message: messageData,
     }
   }, (error, response) => {
