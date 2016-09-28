@@ -22,6 +22,8 @@ const sendTextMessage = (sender, text) => {
       console.log('Error sending messages: ', error)
     } else if (response.body.error) {
       console.log('Error: ', response.body.error)
+    } else {
+      console.log('Response: ', response)
     }
   })
 }
@@ -43,9 +45,10 @@ router.post('/webhook/', (req, res) => {
   for (let i = 0; i < messagingEvents.length; i++) {
     const event = req.body.entry[0].messaging[i]
     const sender = event.sender.id
-    console.log(sender)
+    console.log('sender is:', sender)
     if (event.message && event.message.text) {
       const text = event.message.text
+      console.log('about to call sendTextMessage function')
       sendTextMessage(sender, 'Text received, echo: ' + text.substring(0, 200))
     }
   }
