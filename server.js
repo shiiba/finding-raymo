@@ -18,6 +18,9 @@ app.use(bodyParser.json())
 const facebookController = require('./controllers/facebook.js')
 app.use('/fb', facebookController)
 
+const smsController = require('./controllers/twilio.js')
+app.use('/sms', smsController)
+
 // Listen
 app.listen(port)
 console.log('==============')
