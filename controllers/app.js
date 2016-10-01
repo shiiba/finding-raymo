@@ -25,8 +25,6 @@ const mailjetSecret = process.env.MAILJET_SECRET_KEY
 
 const Mailjet = require('node-mailjet').connect(mailjetApiKey, mailjetSecret)
 
-const sendEmail = Mailjet.post('send')
-
 const handleError = (err) => {
   throw new Error(err.ErrorMessage);
 }
@@ -36,17 +34,19 @@ const handlePostResponse = (response) => {
 }
 
 router.post('/', (req, res) => {
-  console.log(req.body)
   const messageBody = req.body
   const messageText = messageBody.Body
+  console.log('messageText:', messageText)
 
   client.messages.create({
     to: '+19163160342',
     from: '+18474439729',
     body: messageText
   }, (err, message) => {
-    console.log(message.sid)
+    console.log(message)
   })
+
+  const sendEmail = Mailjet.post('send')
 
   const emailData = {
     'FromEmail': 'finding.raymond@gmail.com',
