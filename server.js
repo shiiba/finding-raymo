@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 // Requirements
 const express = require('express')
@@ -15,11 +15,17 @@ app.use(bodyParser.json())
 // Database
 
 // Controllers
-const facebookController = require('./controllers/facebook.js')
-app.use('/fb', facebookController)
+const mainAppController = require('./controllers/app.js')
+app.use('/main', mainAppController)
 
-const smsController = require('./controllers/twilio.js')
-app.use('/sms', smsController)
+// const facebookController = require('./controllers/facebook.js')
+// app.use('/fb', facebookController)
+
+// const smsController = require('./controllers/twilio.js')
+// app.use('/sms', smsController)
+
+// const emailController = require('./controllers/email.js')
+// app.use('/email', emailController)
 
 // Listen
 app.listen(port)
