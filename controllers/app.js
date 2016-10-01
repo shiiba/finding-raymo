@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
   console.log('messageText:', messageText)
 
   client.messages.create({
-    to: '+19163160342',
+    to: '+15163870554',
     from: '+18474439729',
     body: messageText
   }, (err, message) => {
@@ -52,6 +52,13 @@ router.post('/', (req, res) => {
     'FromEmail': 'finding.raymond@gmail.com',
     'FromName': 'Eri Berry',
     'Subject': messageText,
+    'Recipients': [{'Email': 'milly.egawa@gmail.com'}]
+  }
+
+  const emailData2 = {
+    'FromEmail': 'finding.raymond@gmail.com',
+    'FromName': 'Eri Berry',
+    'Subject': messageText,
     'Recipients': [{'Email': 'kshiiba@gmail.com'}]
   }
 
@@ -60,6 +67,10 @@ router.post('/', (req, res) => {
     .then(handlePostResponse)
     .catch(handleError)
 
+  sendEmail
+    .request(emailData2)
+    .then(handlePostResponse)
+    .catch(handleError)
 
   // Will respond to you
   // const twiml = new twilio.TwimlResponse()
