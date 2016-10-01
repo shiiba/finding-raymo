@@ -8,10 +8,10 @@ const express = require('express'),
 // ==========
 
 // Twilio creds
-// const accountSid = process.env.TWILIO_SID
-// const authToken = process.env.TWILIO_AUTH_TOKEN
-const accountSid = 'ACa7aff1d7d2e772eac0b0a4d5228f888f'
-const authToken = 'f4662525b8b264f3a37221602ba094a8'
+const accountSid = process.env.TWILIO_SID
+const authToken = process.env.TWILIO_AUTH_TOKEN
+// const accountSid = 'ACa7aff1d7d2e772eac0b0a4d5228f888f'
+// const authToken = 'f4662525b8b264f3a37221602ba094a8'
 
 // // require Twilio module
 const client = require('twilio')(accountSid, authToken)
