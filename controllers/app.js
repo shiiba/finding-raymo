@@ -10,8 +10,6 @@ const express = require('express'),
 // Twilio creds
 const accountSid = process.env.TWILIO_SID
 const authToken = process.env.TWILIO_AUTH_TOKEN
-// const accountSid = 'ACa7aff1d7d2e772eac0b0a4d5228f888f'
-// const authToken = 'f4662525b8b264f3a37221602ba094a8'
 
 // // require Twilio module
 const client = require('twilio')(accountSid, authToken)
@@ -36,10 +34,11 @@ const handlePostResponse = (response) => {
 router.post('/', (req, res) => {
   const messageBody = req.body
   const messageText = messageBody.Body
+  console.log('messageBody:', messageBody)
   console.log('messageText:', messageText)
 
   client.messages.create({
-    to: '+15165870554',
+    to: '+19163160342',  // change this to RAY
     from: '+18474439729',
     body: messageText
   }, (err, message) => {
@@ -52,25 +51,25 @@ router.post('/', (req, res) => {
     'FromEmail': 'finding.raymond@gmail.com',
     'FromName': 'Eri Berry',
     'Subject': messageText,
-    'Recipients': [{'Email': 'milly.egawa@gmail.com'}]
+    'Recipients': [{'Email': 'kshiiba@gmail.com'}] // change this to RAY
   }
 
   const emailData2 = {
     'FromEmail': 'finding.raymond@gmail.com',
     'FromName': 'Eri Berry',
     'Subject': messageText,
-    'Recipients': [{'Email': 'kshiiba@gmail.com'}]
+    'Recipients': [{'Email': 'kshiiba@gmail.com'}]  // change this to RAY
   }
 
-  sendEmail
-    .request(emailData)
-    .then(handlePostResponse)
-    .catch(handleError)
+  // sendEmail
+  //   .request(emailData)
+  //   .then(handlePostResponse)
+  //   .catch(handleError)
 
-  sendEmail
-    .request(emailData2)
-    .then(handlePostResponse)
-    .catch(handleError)
+  // sendEmail
+  //   .request(emailData2)
+  //   .then(handlePostResponse)
+  //   .catch(handleError)
 
   // Will respond to you
   // const twiml = new twilio.TwimlResponse()
