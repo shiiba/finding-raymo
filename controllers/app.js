@@ -37,56 +37,48 @@ router.post('/', (req, res) => {
   console.log('messageBody:', messageBody)
   console.log('messageText:', messageText)
 
-  client.messages.create({
-    to: '+19163160342',  // change this to RAY
-    from: '+18474439729',
-    body: messageText
-  }, (err, message) => {
-    console.log(message)
-  })
+  if (messageBody.From === '+15165870554') {
+    client.messages.create({
+      to: '+19163160342',  // change this to RAY
+      from: '+18474439729',
+      body: messageText
+    }, (err, message) => {
+      console.log(message)
+    })
+  } else {
+    // client.messages.create({
+    //   to: '+19163160342',  // change this to RAY
+    //   from: '+18474439729',
+    //   body: messageText
+    // }, (err, message) => {
+    //   console.log(message)
+    // })
 
-  const sendEmail = Mailjet.post('send')
+    const sendEmail = Mailjet.post('send')
 
-  const emailData = {
-    'FromEmail': 'finding.raymond@gmail.com',
-    'FromName': 'Eri Berry',
-    'Subject': messageText,
-    'Recipients': [{'Email': 'kshiiba@gmail.com'}] // change this to RAY
+    const emailData = {
+      'FromEmail': 'finding.raymond@gmail.com',
+      'FromName': 'Eri Berry',
+      'Subject': messageText,
+      'Recipients': [{'Email': 'kshiiba@gmail.com'}] // change this to RAY
+    }
+
+    const emailData2 = {
+      'FromEmail': 'finding.raymond@gmail.com',
+      'FromName': 'Eri Berry',
+      'Subject': messageText,
+      'Recipients': [{'Email': 'kshiiba@gmail.com'}]  // change this to RAY
+    }
+
+    sendEmail
+      .request(emailData)
+      .then(handlePostResponse)
+      .catch(handleError)
+
+    // sendEmail
+    //   .request(emailData2)
+    //   .then(handlePostResponse)
+    //   .catch(handleError)
   }
-
-  const emailData2 = {
-    'FromEmail': 'finding.raymond@gmail.com',
-    'FromName': 'Eri Berry',
-    'Subject': messageText,
-    'Recipients': [{'Email': 'kshiiba@gmail.com'}]  // change this to RAY
-  }
-
-  // sendEmail
-  //   .request(emailData)
-  //   .then(handlePostResponse)
-  //   .catch(handleError)
-
-  // sendEmail
-  //   .request(emailData2)
-  //   .then(handlePostResponse)
-  //   .catch(handleError)
-
-  // Will respond to you
-  // const twiml = new twilio.TwimlResponse()
-  // twiml.message('The Robots are coming! Head for the hills!')
-  // res.writeHead(200, {'Content-Type': 'text/xml'})
-  // res.end(twiml.toString())
-
-  // Conditional Replies
-  // const twiml = new twilio.TwimlResponse()
-  // if (req.body.Body == 'hello') {
-  //   twiml.message('Hi!')
-  // } else if(req.body.Body == 'bye') {
-  //   twiml.message('Goodbye')
-  // } else {
-  //   twiml.message('No Body param match, Twilio sends this in the request to your server.')
-  // }
-  // res.writeHead(200, {'Content-Type': 'text/xml'})
-  // res.end(twiml.toString())
 })
 module.exports = router
