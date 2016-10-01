@@ -12,21 +12,21 @@ const express = require('express'),
 // const authToken = process.env.TWILIO_AUTH_TOKEN
 const accountSid = 'ACa7aff1d7d2e772eac0b0a4d5228f888f'
 const authToken = 'f4662525b8b264f3a37221602ba094a8'
-// const testAccountSid = process.env.TWILIO_TEST_SID
-// const testAuthToken= process.env.TWILIO_TEST_AUTH_TOKEN
 
 // // require Twilio module
 const client = require('twilio')(accountSid, authToken)
 
 
 router.post('/', (req, res) => {
-  client.messages.create({
-    to: '+19163160342',
-    from: '+18474439729',
-    body: 'Test message, yo'
-  }, (err, message) => {
-    console.log(message.sid)
-  })
+  console.log(req)
+
+  // client.messages.create({
+  //   to: '+19163160342',
+  //   from: '+18474439729',
+  //   body: 'Test message, yo'
+  // }, (err, message) => {
+  //   console.log(message.sid)
+  // })
 
   // Will respond to you
   // const twiml = new twilio.TwimlResponse()
@@ -51,9 +51,6 @@ router.post('/', (req, res) => {
 // ==========
 // MAILJET
 // ==========
-
-const express = require('express'),
-  router = express.Router()
 
 const mailjetApiKey = process.env.MAILJET_API_KEY
 const mailjetSecret = process.env.MAILJET_SECRET_KEY
