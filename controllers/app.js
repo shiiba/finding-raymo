@@ -37,22 +37,22 @@ router.post('/', (req, res) => {
   console.log('messageBody:', messageBody)
   console.log('messageText:', messageText)
 
-  if (messageBody.From === '+15165870554') {
+  if (messageBody.From === '+12146811029') { // change this to RAY
     client.messages.create({
-      to: '+19163160342',  // change this to RAY
+      to: '+13017857947',  // change this to ERI
       from: '+18474439729',
       body: messageText
     }, (err, message) => {
       console.log(message)
     })
   } else {
-    // client.messages.create({
-    //   to: '+19163160342',  // change this to RAY
-    //   from: '+18474439729',
-    //   body: messageText
-    // }, (err, message) => {
-    //   console.log(message)
-    // })
+    client.messages.create({
+      to: '+12146811029',  // change this to RAY
+      from: '+18474439729',
+      body: messageText
+    }, (err, message) => {
+      console.log(message)
+    })
 
     const sendEmail = Mailjet.post('send')
 
@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
       'FromEmail': 'finding.raymond@gmail.com',
       'FromName': 'Eri Berry',
       'Subject': messageText,
-      'Recipients': [{'Email': 'kshiiba@gmail.com'}] // change this to RAY
+      'Recipients': [{'Email': 'raymond.tolentino@gmail.com'}] // change this to RAY
     }
 
     const emailData2 = {
