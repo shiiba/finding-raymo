@@ -18,7 +18,7 @@ const client = require('twilio')(accountSid, authToken)
 
 
 router.post('/', (req, res) => {
-  console.log(req)
+  console.log(req.body.body)
 
   // client.messages.create({
   //   to: '+19163160342',
