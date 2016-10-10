@@ -14,6 +14,10 @@ const authToken = process.env.TWILIO_AUTH_TOKEN
 // // require Twilio module
 const client = require('twilio')(accountSid, authToken)
 
+const rayPhone = process.env.RAY_PHONE
+const eriPhone = process.env.ERI_PHONE
+const raymoPhone = process.env.FINDING_RAYMO_PHONE
+
 // ==========
 // MAILJET
 // ==========
@@ -22,6 +26,9 @@ const mailjetApiKey = process.env.MAILJET_API_KEY
 const mailjetSecret = process.env.MAILJET_SECRET_KEY
 
 const Mailjet = require('node-mailjet').connect(mailjetApiKey, mailjetSecret)
+
+const rayEmail = process.env.RAY_EMAIL
+const raymoEmail = process.env.FINDING_RAYMO_EMAIL
 
 const handleError = (err) => {
   throw new Error(err.ErrorMessage);
@@ -37,18 +44,18 @@ router.post('/', (req, res) => {
   console.log('messageBody:', messageBody)
   console.log('messageText:', messageText)
 
-  if (messageBody.From === '+12146811029') { // change this to RAY
+  if (messageBody.From === rayPhone) {
     client.messages.create({
-      to: '+13017857947',  // change this to ERI
-      from: '+18474439729',
+      to: eriPhone,
+      from: raymoPhone,
       body: messageText
     }, (err, message) => {
       console.log(message)
     })
   } else {
     client.messages.create({
-      to: '+12146811029',  // change this to RAY
-      from: '+18474439729',
+      to: rayPhone,
+      from: raymoPhone,
       body: messageText
     }, (err, message) => {
       console.log(message)
@@ -57,18 +64,18 @@ router.post('/', (req, res) => {
     const sendEmail = Mailjet.post('send')
 
     const emailData = {
-      'FromEmail': 'finding.raymond@gmail.com',
+      'FromEmail': raymoEmail,
       'FromName': 'Eri Berry',
       'Subject': messageText,
-      'Recipients': [{'Email': 'raymond.tolentino@gmail.com'}] // change this to RAY
+      'Recipients': [{'Email': rayEmail}]
     }
 
-    const emailData2 = {
-      'FromEmail': 'finding.raymond@gmail.com',
-      'FromName': 'Eri Berry',
-      'Subject': messageText,
-      'Recipients': [{'Email': 'kshiiba@gmail.com'}]  // change this to RAY
-    }
+    // const emailData2 = {
+    //   'FromEmail': raymoEmail,
+    //   'FromName': 'Eri Berry',
+    //   'Subject': messageText,
+    //   'Recipients': [{'Email': }]  // change this to RAY BIZ EMAIL
+    // }
 
     sendEmail
       .request(emailData)
